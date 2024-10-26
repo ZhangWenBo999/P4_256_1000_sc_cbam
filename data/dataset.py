@@ -70,7 +70,7 @@ class InpaintDataset(data.Dataset):
         elif self.mask_mode == 'm5':
             self.mask_mode = np.random.choice(['ThickStrokes', 'MediumStrokes', 'ThinStrokes', 'Every_N_Lines', 'Completion'])
         elif self.mask_mode == 'm7':
-            self.mask_mode = np.random.choice(['ThickStrokes', 'MediumStrokes', 'ThinStrokes', 'Every_N_Lines', 'Completion', 'Expand', 'Nearest_Neighbor'])
+            self.mask_mode = np.random.choice(['ThickStrokes', 'MediumStrokes', 'ThinStrokes', 'Every_N_Lines', 'Completion', 'Expand', 'Nearest_Neighbor'], p=[0.25, 0.0625, 0.0625, 0.0625, 0.25, 0.25, 0.0625])
 
         if self.mask_mode == 'ThinStrokes':
             self.m12_mode = RandomAttribute('ThinStrokes', 256)

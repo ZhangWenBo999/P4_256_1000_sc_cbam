@@ -1,6 +1,7 @@
 {
     "name": "inpainting_celebahq", // experiments name
-    "gpu_ids": [0], // gpu ids list, default is single 0
+//    "gpu_ids": [0], // gpu ids list, default is single 0
+    "gpu_ids": , // gpu ids list, default is single 0
     "seed" : -1, // random seed, seed <0 represents randomization not used 
     "finetune_norm": false, // find the parameters to optimize
 
@@ -20,7 +21,8 @@
                 "name": ["data.dataset", "InpaintDataset"], // import Dataset() class / function(not recommend) from data.dataset.py (default is [data.dataset.py])
                 "args":{ // arguments to initialize dataset
                     // train_giga
-                    "data_root": "datasets/celebahq_flist/flist/train_shuffled_giga.flist",
+//                    "data_root": "datasets/celebahq_flist/flist/train_shuffled_giga.flist",
+                    "data_root": "/kaggle/input/256-1000/datasets/celebahq_flist/flist/train_shuffled_giga_1000.flist",
                     // train_local_test_giga
 //                    "data_root": "datasets/celebahq_flist/flist/train_shuffled_local_test.flist",
 
@@ -36,14 +38,14 @@
                 "validation_split": 4, // percent or number
                 "args":{ // arguments to initialize train_dataloader
                     "batch_size": 5, // batch size in each gpu
-                    "num_workers": 12,
+                    "num_workers":10,
                     "shuffle": true,
                     "pin_memory": true,
                     "drop_last": true
                 },
                 "val_args":{ // arguments to initialize valid_dataloader, will overwrite the parameters in train_dataloader
                     "batch_size": 2, // batch size in each gpu
-                    "num_workers": 12,
+                    "num_workers":10,
                     "shuffle": false,
                     "pin_memory": true,
                     "drop_last": false
@@ -59,8 +61,8 @@
                     // test_local_test
 //                    "data_root": "datasets/celebahq_flist/flist/visual_test_shuffled_local_test.flist",
                     "mask_config": {
-//                        "mask_mode": "center",
-                        "mask_mode": "ThinStrokes",
+                        "mask_mode": "center",
+//                        "mask_mode": "ThinStrokes",
                         "phase": "test"
                     }
                 }
@@ -68,7 +70,7 @@
             "dataloader":{
                 "args":{
                     "batch_size": 5,
-                    "num_workers": 12,
+                    "num_workers": 14,
                     "pin_memory": true
                 }
             }
@@ -144,7 +146,7 @@
     },
 
     "train": { // arguments for basic training
-        "n_epoch": 200, // max epochs, not limited now
+        "n_epoch": 300, // max epochs, not limited now
         "n_iter": 1e8, // max interations
         "val_epoch": 1, // valdation every specified number of epochs
         "save_checkpoint_epoch": 1,

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="root@ehjq8b6m1wstiniksnow.deepln.com:54085" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="root@4dkgjhsylxrpftqfsnow.deepln.com:45115">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_701" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@4dkgjhsylxrpftqfsnow.deepln.com:45115 (2)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data/coding" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@ehjq8b6m1wstiniksnow.deepln.com:54085">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data/coding" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@tm743drixbcw2lwfsnow.deepln.com:48809">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/pycharm_project_517" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@tm743drixbcw2lwfsnow.deepln.com:48809 (2)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data/coding" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@ttprdf3uyo8osquesnow.deepln.com:40290">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data/coding" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@ttprdf3uyo8osquesnow.deepln.com:40290 (2)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data/coding" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="root@urrimck0h63sennysnow.deepln.com:46509">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/data/coding" local="$PROJECT_DIR$" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

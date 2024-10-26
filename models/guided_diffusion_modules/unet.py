@@ -12,6 +12,8 @@ from .nn import (
     count_flops_attn,
     gamma_embedding
 )
+from .cbam_sc import *
+
 
 class SiLU(nn.Module):
     def forward(self, x):
@@ -391,9 +393,11 @@ class UNet(nn.Module):
         )
 
         ch = input_ch = int(channel_mults[0] * inner_channel)
+        self.cbam_sc=nn.ModuleList()
         self.input_blocks = nn.ModuleList(
             [EmbedSequential(nn.Conv2d(in_channel, ch, 3, padding=1))]
         )
+        self.cbam_sc.append(CBAM(gate_channels=ch))
         self._feature_size = ch
         input_block_chans = [ch]
         ds = 1
@@ -423,6 +427,7 @@ class UNet(nn.Module):
                 self.input_blocks.append(EmbedSequential(*layers))
                 self._feature_size += ch
                 input_block_chans.append(ch)
+                self.cbam_sc.append(CBAM(gate_channels=ch))
             if level != len(channel_mults) - 1:
                 out_ch = ch
                 self.input_blocks.append(
@@ -446,6 +451,8 @@ class UNet(nn.Module):
                 input_block_chans.append(ch)
                 ds *= 2
                 self._feature_size += ch
+
+                self.cbam_sc.append(CBAM(gate_channels=ch))
 
         self.middle_block = EmbedSequential(
             ResBlock(
@@ -530,6 +537,7 @@ class UNet(nn.Module):
         :return: an [N x C x ...] Tensor of outputs.
         """
         hs = []
+        hs_cbam_sc = []
         gammas = gammas.view(-1, )
         emb = self.cond_embed(gamma_embedding(gammas, self.inner_channel))
 
@@ -537,9 +545,15 @@ class UNet(nn.Module):
         for module in self.input_blocks:
             h = module(h, emb)
             hs.append(h)
+
+        hs.reverse()
+        for module in self.cbam_sc:
+            hs_cbam_sc.append(module(hs.pop()))
+
         h = self.middle_block(h, emb)
         for module in self.output_blocks:
-            h = torch.cat([h, hs.pop()], dim=1)
+            # h = torch.cat([h, hs.pop()], dim=1)
+            h = torch.cat([h, hs_cbam_sc.pop()], dim=1)
             h = module(h, emb)
         h = h.type(x.dtype)
         return self.out(h)

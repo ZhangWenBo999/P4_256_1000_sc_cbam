@@ -96,7 +96,7 @@ def dict2str(opt, indent_l=1):
 
 def parse(args):
     json_str = ''
-    with open(args.config, 'r') as f:
+    with open(args.config, 'r', encoding='utf-8') as f:
         for line in f:
             line = line.split('//')[0] + '\n'
             json_str += line
