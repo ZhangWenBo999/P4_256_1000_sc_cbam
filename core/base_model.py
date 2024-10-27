@@ -189,6 +189,7 @@ class BaseModel():
 
     def load_network(self, network, network_label, strict=True):
         if self.opt['path']['resume_state'] is None:
+            print("resume_state is None!!!")
             return 
         self.logger.info('Beign loading pretrained model [{:s}] ...'.format(network_label))
 
