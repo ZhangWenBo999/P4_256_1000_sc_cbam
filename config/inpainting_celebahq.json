@@ -1,7 +1,7 @@
 {
     "name": "inpainting_celebahq", // experiments name
-//    "gpu_ids": [0], // gpu ids list, default is single 0
-    "gpu_ids": , // gpu ids list, default is single 0
+    "gpu_ids": [0], // gpu ids list, default is single 0
+//    "gpu_ids": , // gpu ids list, default is single 0
     "seed" : -1, // random seed, seed <0 represents randomization not used 
     "finetune_norm": false, // find the parameters to optimize
 
